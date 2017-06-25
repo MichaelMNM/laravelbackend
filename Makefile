@@ -19,7 +19,7 @@ test:
 	docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) up test
 
 build:
-	docker-compose -p (DEV_PROJECT) -f $(DEV_COMPOSE_FILE) up builder
+	docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) up builder
 
 release:
 	docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build
