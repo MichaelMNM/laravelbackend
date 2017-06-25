@@ -1,0 +1,57 @@
+---
+version: "3"
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: docker/release/Dockerfile
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravelbackend
+      DB_USERNAME: root
+      DB_PASSWORD: password
+    volumes:
+      - webroot:/var/www/laravel
+    command:
+      - php-fpm
+  test:
+    image: laravelbackend/laravelbackend-specs
+    links:
+      - app
+      - nginx
+    environment:
+      URL: http://nginx:8000/api/api-test
+      JUNIT_REPORT_PATH: /reports/acceptance.xml
+      JUNIT_REPORT_STACK: 1
+    command: --reporter mocha-jenkins-reporter
+  db:
+    image: mysql:5.6
+    expose:
+      - "3306"
+    environment:
+      MYSQL_DATABASE: laravelbackend
+      MYSQL_ROOT_PASSWORD: password
+  nginx:
+    image: nginx
+    links:
+      - app
+    volumes:
+      - ./laravelbackend.conf:/etc/nginx/conf.d/laravelbackend.conf
+      - webroot:/var/www/laravel
+    ports:
+      - "8000:8000"
+  agent:
+    image: laravelbackend/ansible
+    volumes:
+      - ../../ansible/probe.yml:/ansible/site.yml
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      PROBE_HOST: "db"
+      PROBE_PORT: "3306"
+volumes:
+  webroot:
