@@ -1,5 +1,5 @@
 PROJECT_NAME ?= laravelbackend
-ORG_NAME ?= mmandato
+ORG_NAME ?= michaelmnm
 REPO_NAME ?= laravelbackend
 
 
