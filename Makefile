@@ -31,3 +31,6 @@ clean:
 	docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) rm -f
 	docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) kill
 	docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) rm -f
+
+	# Remove dangling images
+	docker images -q -f dangling=true label=application=$(REPO_NAME) | xargs -I ARGS docker rmi -f ARGS

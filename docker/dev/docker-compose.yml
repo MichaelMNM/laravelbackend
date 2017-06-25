@@ -33,7 +33,7 @@ services:
       - ../../target:/var/build
     entrypoint: "build.sh"
   agent:
-    image: laravelbackend/ansible:latest
+    image: michaelmnm/ansible:latest
     volumes:
       - ../../ansible/probe.yml:/ansible/site.yml
     links:

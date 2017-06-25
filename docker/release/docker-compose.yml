@@ -43,7 +43,7 @@ services:
     ports:
       - "8000:8000"
   agent:
-    image: laravelbackend/ansible
+    image: michaelmnm/ansible
     volumes:
       - ../../ansible/probe.yml:/ansible/site.yml
     links:
