@@ -1,4 +1,4 @@
-FROM laravelbackend/laravelbackend-base:latest
+FROM michaelmnm/laravelbackend-base:latest
 MAINTAINER Michael Mandato <mmandato@helloencom.co>
 
 COPY scripts/release.sh /usr/local/bin/release.sh

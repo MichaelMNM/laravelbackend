@@ -1,4 +1,4 @@
-FROM laravelbackend/laravelbackend-base
+FROM michaelmnm/laravelbackend-base
 MAINTAINER Michael Mandato <mmandato@helloencom.co>
 
 RUN apt-get update && \
