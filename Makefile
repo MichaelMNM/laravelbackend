@@ -144,8 +144,8 @@ buildtag:
 
 login:
 	${INFO} "Logging in to Docker registry $(DOCKER_REGISTRY)..."
-	@ echo "docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD)"
-	@ docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD)
+	@ echo "docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD) -e $(DOCKER_REGISTRY_AUTH)"
+	@ docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD) -e $(DOCKER_REGISTRY_AUTH)
 	${INFO} "Logged in to Docker registry $(DOCKER_REGISTRY)"
 
 logout:
