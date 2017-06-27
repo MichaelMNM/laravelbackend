@@ -46,6 +46,8 @@ DOCKER_REGISTRY_AUTH ?=
 # run --rm for tasks
 # up for testing
 test:
+	${INFO} "Creating cache volume..."
+	@ docker volume create --name=cache-volume
 
 	${INFO} "Pulling latest images..."
 	@ docker-compose -p $(DEV_PROJECT) -f $(DEV_COMPOSE_FILE) pull
