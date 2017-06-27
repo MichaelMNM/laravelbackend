@@ -21,7 +21,7 @@ WORKDIR /var/www
 
 # set entrypoint pid as phpunit
 ENTRYPOINT ["test.sh"]
-CMD ["vendor/bin/phpunit"]
+CMD ["vendor/bin/phpunit", "--log-junit /reports/unit-tests.xml "]
 
 #start container in dev mode
 #docker-compose run --rm --service-ports test php artisan serve --host=0.0.0.0 --port=8000

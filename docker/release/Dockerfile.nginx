@@ -1,0 +1,5 @@
+FROM nginx
+MAINTAINER Michael Mandato <mmandato@helloencom.co>
+
+
+COPY laravelbackend.conf /etc/nginx/conf.d/laravelbackend.conf

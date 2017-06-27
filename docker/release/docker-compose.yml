@@ -17,7 +17,7 @@ services:
     command:
       - php-fpm
   test:
-    image: laravelbackend/laravelbackend-specs
+    image: michaelmnm/laravelbackend-specs
     links:
       - app
       - nginx
@@ -34,18 +34,17 @@ services:
       MYSQL_DATABASE: laravelbackend
       MYSQL_ROOT_PASSWORD: password
   nginx:
-    image: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
     links:
       - app
     volumes:
-      - ./laravelbackend.conf:/etc/nginx/conf.d/laravelbackend.conf
       - webroot:/var/www/laravel
     ports:
       - "8000:8000"
   agent:
     image: michaelmnm/ansible
-    volumes:
-      - ../../ansible/probe.yml:/ansible/site.yml
     links:
       - db
     depends_on:
@@ -53,5 +52,6 @@ services:
     environment:
       PROBE_HOST: "db"
       PROBE_PORT: "3306"
+    command: ["probe.yml"]
 volumes:
   webroot:

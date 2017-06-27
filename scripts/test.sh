@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir /reports
+
 chmod -R 777 /var/www/storage
 
 # Install laravel dependencies

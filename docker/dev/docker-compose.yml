@@ -30,12 +30,9 @@ services:
       dockerfile: docker/dev/Dockerfile
     volumes:
       - cache-volume:/cache
-      - ../../target:/var/build
     entrypoint: "build.sh"
   agent:
     image: michaelmnm/ansible:latest
-    volumes:
-      - ../../ansible/probe.yml:/ansible/site.yml
     links:
       - db
     depends_on:
@@ -43,6 +40,7 @@ services:
     environment:
       PROBE_HOST: "db"
       PROBE_PORT: "3306"
+    command: ["probe.yml"]
   db:
     image: mysql:latest
     hostname: db

@@ -2,5 +2,8 @@
 
 composer install
 
-tar -zcf /var/build/archive.tar.gz ./
+mkdir /build
+
+tar -zcf /build/archive.tar.gz ./
+
 
