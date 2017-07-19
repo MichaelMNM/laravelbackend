@@ -13,4 +13,6 @@ pwd
 
 rm -rf /var/deploy
 
+cd /var/www/laravel
+
 exec $@
