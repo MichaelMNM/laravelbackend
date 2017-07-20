@@ -43,6 +43,8 @@ services:
       - webroot:/var/www/laravel
     ports:
       - "8000:8000"
+    depends_on:
+      - app
   agent:
     image: michaelmnm/ansible
     links:
