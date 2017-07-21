@@ -39,5 +39,5 @@ Route::middleware('auth:api')->get('test', function(Request $request) {
 
 Route::get('api-test', function (Request $request) {
 
-    return Response::json(['apiTest' => 'Success'], 200);
+    return Response::json(['apiTest' => 'Success Augmented'], 200);
 });
