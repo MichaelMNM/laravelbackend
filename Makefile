@@ -87,7 +87,7 @@ release:
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) pull test
 
 	${INFO} "Building images..."
-	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build app
+	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build laravelbackend
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) build --pull nginx
 
 	${INFO} "Ensuring database is ready..."

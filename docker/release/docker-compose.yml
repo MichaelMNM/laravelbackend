@@ -1,7 +1,7 @@
 ---
 version: "3"
 services:
-  app:
+  laravelbackend:
     build:
       context: ../../
       dockerfile: docker/release/Dockerfile
@@ -19,7 +19,7 @@ services:
   test:
     image: michaelmnm/laravelbackend-specs
     links:
-      - app
+      - laravelbackend
       - nginx
     environment:
       URL: http://nginx:8000/api/api-test
@@ -38,13 +38,13 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     links:
-      - app
+      - laravelbackend
     volumes:
       - webroot:/var/www/laravel
     ports:
       - "8000:8000"
     depends_on:
-      - app
+      - laravelbackend
   agent:
     image: michaelmnm/ansible
     links:
