@@ -11,8 +11,8 @@ REL_COMPOSE_FILE := docker/release/docker-compose.yml
 REL_PROJECT := $(PROJECT_NAME)$(BUILD_ID)
 DEV_PROJECT := $(REL_PROJECT)_dev
 
-# Application Service Name - must match Docker compose release specification appllication service name
-APP_SERVICE_NAME := app
+# Application Service Name - must match Docker compose release specification application service name
+APP_SERVICE_NAME := laravelbackend
 
 # Build tag expression
 BUILD_TAG_EXPRESSION ?= date -u +%Y%m%d%H%M%S
